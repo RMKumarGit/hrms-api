@@ -1,0 +1,16 @@
+[project]
+name = "hrms-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.15"
+dependencies = [
+    "fastapi[standard]>=0.162.0",
+    "psycog[binary]>=0.0.1",
+    "psycopg[binary]>=3.3.7",
+    "pwdlib[argon2]>=0.3.1",
+    "pyjwt>=2.15.1",
+    "sqlalchemy>=2.1.6",
+]
+[tool.fastapi]
+entrypoint = "src.main:app"
