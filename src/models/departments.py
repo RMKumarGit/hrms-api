@@ -8,7 +8,7 @@ class Departments(Base):
     __tablename__ = 'departments'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(20),nullable=False)
+    name: Mapped[str] = mapped_column(String(100),nullable=False,unique=True)
     description: Mapped[str | None] = mapped_column(String(1000), nullable=True)
-    is_active:Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default=text('False'))
+    is_active:Mapped[bool] = mapped_column(Boolean, nullable=False, default=True, server_default=text('true'))
     created_at:Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())

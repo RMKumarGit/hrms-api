@@ -5,12 +5,6 @@ from src.database.base import Base
 class LeaveTypes(Base):
     __tablename__ = 'leave_types'
 
-#     Name	Code	Paid
-# Annual Leave	ANNUAL	Yes
-# Sick Leave	SICK	Yes
-# Casual Leave	CASUAL	Yes
-# Unpaid Leave	UNPAID	No
-
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(20),nullable=False)
     code: Mapped[str] = mapped_column(String(20),nullable=False, unique=True)

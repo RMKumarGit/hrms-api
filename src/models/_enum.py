@@ -6,7 +6,7 @@ class UserRole(str, Enum):
     EMPLOYEE = "EMPLOYEE"
 
 class LeaveStatus(str, Enum):
-    PEDNING = "PEDNING"
+    PENDING = "PENDING"
     APPROVED = "APPROVED"
     REJECTED = "REJECTED"
     CANCELLED = "CANCELLED"

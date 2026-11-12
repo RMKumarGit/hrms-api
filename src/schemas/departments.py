@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field, ConfigDict
 class DepartmentCreate(BaseModel):
     name: str = Field(min_length=3,max_length=100)
     description: str | None = None
-    is_active:bool
 
 class DepartmentUpdate(BaseModel):
     name: str = Field(min_length=3,max_length=100)

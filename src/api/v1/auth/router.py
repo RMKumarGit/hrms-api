@@ -9,7 +9,7 @@ from src.schemas.user import UserCreate,UserLogin,UserResponse,TokenResponse
 
 router = APIRouter(
     prefix='/auth',
-    tags=['Authendication']
+    tags=['Authentication']
 )
 
 @router.post('/register',response_model=UserResponse,status_code=201)

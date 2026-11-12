@@ -6,8 +6,6 @@ from src.models._enum import UserRole
 class UserCreate(BaseModel):
     email:EmailStr
     password: str = Field(min_length=8)
-    role:UserRole = 'EMPLOYEE'
-    is_active:bool = True
 
 class UserLogin(BaseModel):
     email:EmailStr

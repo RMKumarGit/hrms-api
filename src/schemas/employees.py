@@ -3,8 +3,7 @@ from datetime import date
 from pydantic import BaseModel, Field, EmailStr, model_validator, ConfigDict
 
 class EmployeeCreate(BaseModel):
-    email: EmailStr
-    password: str = Field(min_length=8)
+    user_id:int
     first_name: str = Field(min_length=2,max_length=100)
     last_name: str = Field(min_length=1, max_length=100)
     employee_code: str = Field(min_length=3, max_length=20)
@@ -22,7 +21,6 @@ class EmployeeCreate(BaseModel):
         return self
 
 class EmployeeResponse(BaseModel):
-    email:EmailStr
     first_name: str
     last_name: str
     employee_code: str

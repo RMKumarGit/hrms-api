@@ -23,7 +23,6 @@ class AuthService:
 
         try:
             user = self.user_repository.create_user(email=data.email,password=passwod_hash)
-            user.is_active = True
 
             self.db.commit()
             self.db.refresh(user)
