@@ -27,7 +27,3 @@ def get_db():
         raise
     finally:
         db.close()
-
-def create_tables():
-    from src.models import departments,employees,leave_requests,leave_types,user
-    Base.metadata.create_all(bind=engine)
