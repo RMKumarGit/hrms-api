@@ -2,6 +2,7 @@ from src.services.department_service import DepartmentService
 from src.schemas.departments import (
     DepartmentCreate,
     DepartmentResponse,
+    DepartmentUpdate
 )
 
 
@@ -27,3 +28,11 @@ class DepartmentController:
             DepartmentResponse.model_validate(dept)
             for dept in departments
         ]
+
+    def update_department(self,data:DepartmentUpdate,department_id:int):
+        deparments = self.department_service.update_department(department_id,data)
+
+        return DepartmentResponse.model_validate(deparments)
+
+    def delete_deparment(self,department_id:int):
+        return self.department_service.delete_department(department_id)

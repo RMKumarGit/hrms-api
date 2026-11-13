@@ -35,8 +35,6 @@ class AuthService:
 
     def login_user(self,data:UserLogin) -> dict:
         user = self.user_repository.get_by_email(email=data.email)
-        print(data)
-        print(user)
 
         if user is None or not verify_hash_password(data.password,user.password_hash):
             raise HTTPException(

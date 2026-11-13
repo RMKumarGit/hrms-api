@@ -9,7 +9,7 @@ from src.models.user import Users
 from src.database.db import get_db
 
 from src.controllers.department_controller import DepartmentController
-from src.schemas.departments import DepartmentCreate, DepartmentResponse
+from src.schemas.departments import DepartmentCreate, DepartmentResponse, DepartmentUpdate
 
 
 router = APIRouter(
@@ -47,3 +47,33 @@ def get_departments(
 ):
     controller = DepartmentController(db)
     return controller.get_all_departments()
+
+@router.patch(
+    "/{department_id}",
+    response_model=DepartmentResponse,
+    status_code=status.HTTP_200_OK
+)
+def update_department(
+    department_id:int,
+    data:DepartmentUpdate,
+    curr_user: Annotated[Users, Depends(
+        require_roles(UserRole.HR_ADMIN)
+    )],
+    db: Annotated[Session, Depends(get_db)]
+):
+    controller = DepartmentController(db)
+    return controller.update_department(data,department_id)
+
+@router.delete(
+    "/{department_id}",
+    status_code=status.HTTP_200_OK
+)
+def delete_department_by_id(
+    department_id:int,
+    curr_user: Annotated[Users, Depends(
+        require_roles(UserRole.HR_ADMIN)
+    )],
+    db: Annotated[Session, Depends(get_db)]
+):
+    controller = DepartmentController(db)
+    return controller.delete_deparment(department_id)
