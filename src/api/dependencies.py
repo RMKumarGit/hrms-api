@@ -1,7 +1,7 @@
 from typing import Annotated
 
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer,HTTPBearer,HTTPAuthorizationCredentials
+from fastapi.security import HTTPBearer,HTTPAuthorizationCredentials
 
 from sqlalchemy.orm import Session
 from src.database.db import get_db
@@ -9,10 +9,6 @@ from src.core.security import decode_access_token
 from src.models.user import Users
 
 import jwt
-
-oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl='api/v1/auth/login'
-)
 
 security = HTTPBearer()
 
